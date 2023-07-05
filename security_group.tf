@@ -2,6 +2,7 @@ resource "aws_security_group" "alb" {
   name        = "${local.app}-alb"
   description = "For ALB."
   vpc_id      = module.vpc.vpc_id
+
   ingress {
     description = "Allow HTTP from ALL."
     from_port   = 80
@@ -9,6 +10,7 @@ resource "aws_security_group" "alb" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
   egress {
     description = "Allow all to outbound."
     from_port   = 0
@@ -25,6 +27,7 @@ resource "aws_security_group" "ecs" {
   name        = "${local.app}-ecs"
   description = "For ECS."
   vpc_id      = module.vpc.vpc_id
+
   egress {
     description = "Allow all to outbound."
     from_port   = 0
@@ -32,6 +35,7 @@ resource "aws_security_group" "ecs" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
   tags = {
     Name = "${local.app}-ecs"
   }
