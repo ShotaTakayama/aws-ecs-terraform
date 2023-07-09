@@ -9,8 +9,7 @@ on:
       - main
 
 env:
-  OIDC_ARN: arn:aws:iam::472153192489:role/GitHubActionsOIDC
-  # Change xxxxxxxxxxxx to your AWS account id
+  OIDC_ARN: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/GitHubActionsOIDC
 
 permissions:
   id-token: write
